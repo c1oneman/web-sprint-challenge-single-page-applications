@@ -12,7 +12,7 @@ export default yup.object().shape({
   sausage: yup.boolean(),
   shrimp: yup.boolean(),
   bacon: yup.boolean(),
-
+  
   special: yup.string()
-    .min(2, 'Special must be 2 chars or longer'),
+    .required('Please fill out the special request')
 })

@@ -62,21 +62,28 @@ export default function Form() {
       }
       
   useEffect(() => {
-    // 🔥 STEP 9- ADJUST THE STATUS OF `disabled` EVERY TIME `formValues` CHANGES
-
-    /* Each time the form value state is updated, check to see if it is valid per our schema. 
-    This will allow us to enable/disable the submit button.*/
-
-    /* We pass the entire state into the entire schema, no need to use reach here. 
-    We want to make sure it is all valid before we allow a user to submit
-    isValid comes from Yup directly */
     schema.isValid(formValues)
       .then(valid => {
         setDisabled(!valid)
       })
   }, [formValues])
+  useEffect(() => {
+    console.log(orders)
+  }, [orders])
+  const postOrder = newOrder => {
+        setOrders(orders.concat(newOrder))
+        setFormValues(initialFormValues)
+  }
       const formSubmit = () => {
-       
+        const newOrder = {
+            name: formValues.name.trim(),
+            size: formValues.size.trim(),
+            // toppings
+            toppings: ['pepperoni', 'sausage', 'shrimp', 'bacon'].filter(toppings => formValues[toppings]),
+            special: formValues.special.trim(),
+          }
+         
+          postOrder(newOrder)
       }
     
 

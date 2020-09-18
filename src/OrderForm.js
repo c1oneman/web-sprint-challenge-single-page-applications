@@ -113,14 +113,14 @@ export default function OrderForm(props) {
       
       <label>Special Request
           <input
-            value={values.email}
+            value={values.special}
             onChange={onChange}
             name='special'
             type='text'
           />
         </label>
       </div>
-      <button disabled={disabled}>submit</button>
+      <button id = "submit" disabled={disabled}>Order</button>
 
     </form>
   )
